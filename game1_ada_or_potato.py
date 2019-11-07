@@ -18,7 +18,7 @@ class ada(arcade.Sprite):
 
     def update(self):
         self.timer += (1/60)
-        if (self.timer % 2) >= 0 and (self.timer % 2) < .9:
+        if 0 <= (self.timer % 2) < .9:
             self.alpha = 255
         else:
             self.alpha = 0
@@ -36,7 +36,7 @@ class potato(arcade.Sprite):
 
     def update(self):
         self.timer += (1/60)
-        if (self.timer % 2) >= 1 and (self.timer % 2) < 1.9:
+        if 1 <= (self.timer % 2) < 1.9:
             self.alpha = 255
         else:
             self.alpha = 0
