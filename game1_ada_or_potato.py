@@ -4,7 +4,8 @@ WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
 BACKGROUND_COLOR = arcade.color.BLACK
 GAME_TITLE = "Introduction"
-GAME_SPEED = 1/60
+GAME_SPEED = 1 / 60
+
 
 class ada(arcade.Sprite):
     timer: int
@@ -12,8 +13,8 @@ class ada(arcade.Sprite):
     def __init__(self):
         super().__init__("images/ada.png")
         self.timer = 0
-        self.center_y = (WINDOW_HEIGHT/2)
-        self.center_x = (WINDOW_WIDTH/2)
+        self.center_y = (WINDOW_HEIGHT / 2)
+        self.center_x = (WINDOW_WIDTH / 2)
 
     def update(self):
         self.timer += (1/60)
@@ -23,16 +24,15 @@ class ada(arcade.Sprite):
             self.alpha = 0
 
 
-
-
 class potato(arcade.Sprite):
     timer: int
 
     def __init__(self):
         super().__init__("images/potato.png", scale=.15)
         self.timer = 0
-        self.center_y = (WINDOW_HEIGHT/2)
-        self.center_x = (WINDOW_WIDTH/2)
+        self.center_y = (WINDOW_HEIGHT / 2)
+        self.center_x = (WINDOW_WIDTH / 2)
+
 
     def update(self):
         self.timer += (1/60)
@@ -42,12 +42,10 @@ class potato(arcade.Sprite):
             self.alpha = 0
 
 
-
-
-
 class ada_or_potato(arcade.Window):
     score: int
     timer: int
+
     def __init__(self):
         """ Initialize variables """
         super().__init__(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_TITLE)
@@ -74,16 +72,15 @@ class ada_or_potato(arcade.Window):
     def on_update(self, delta_time):
         """ Called every frame of the game (1/GAME_SPEED times per second)"""
         self.logo_list.update()
-        self.timer += (1/60)
+        self.timer += (1 / 60)
 
-    def on_mouse_press(self, x, y, button, modifiers):
+    def on_mouse_press(self, x: float, y: float, button: int, modifiers: int):
         if 0 <= (self.timer % 2) < .9:
             if (109.5 <= x <= 390.5) and (28 <= y <= 472):
                 self.score += 1
         elif 1 <= (self.timer % 2) < 1.9:
             if (73 <= x <= 427) and (119.125 <= y <= 380.875):
                 self.score -= 1
-
 
 
 def main():
